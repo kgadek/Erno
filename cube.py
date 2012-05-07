@@ -5,7 +5,7 @@ import subprocess
 
 class Repr:
     """ Reprezentacja kostki + konwersja do formatu
-    czytelnego dla solvera"""
+    czytelnego dla solvera """
 
     F_TOP = 0
     F_LEFT = 1
@@ -21,17 +21,18 @@ class Repr:
     C_RED = 4
     C_YELLOW = 5
 
-    n_dict = {0: 'W', 1: 'G', 2: 'O',
-              3: 'B', 4: 'R', 5: 'Y'}
+    n_dict = {#-1: '?',
+               0: 'W', 1: 'G', 2: 'O',
+               3: 'B', 4: 'R', 5: 'Y'}
 
     def __init__(self):
         self.state = [[[-1 for _ in range(6)] for _ in range(4)] for _ in range(4)]
     def __str__(self):
         lst = []
-        for i in state:
-            for j in state:
-                for k in state:
-                    lst.append(n_dict[k])
+        for i in self.state:
+            for j in i:
+                for k in j:
+                    lst.append(Repr.n_dict[k])
         return ''.join(lst)
         
 
